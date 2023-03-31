@@ -20,7 +20,7 @@ public class SavingAccount extends Account {
         setBalance(getBalance().subtract(amount)); // setting the balance by subtracting the amount
     }
 
-    private void setBalance(BigDecimal newBalance) {
-        super.balance = newBalance; // set the new balance 
+    protected void setBalance(BigDecimal newBalance) {
+        super.setBalance(newBalance);// set the new balance 
     }
 }
