@@ -3,8 +3,8 @@ import java.math.BigDecimal;
 public class CheckingAccount extends Account{
     private BigDecimal overDraftLimit;
 
-    public CheckingAccount(String ID, BigDecimal balance, BigDecimal overDraftLimit) {
-        super(ID, balance);
+    public CheckingAccount(BigDecimal balance, BigDecimal overDraftLimit) {
+        super(balance);
         this.overDraftLimit = overDraftLimit;
     } // constructor with new value - overDraftLimit 
 

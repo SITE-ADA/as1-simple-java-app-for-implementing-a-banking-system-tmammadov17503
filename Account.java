@@ -4,8 +4,8 @@ public abstract class Account {
    private String ID;
    private BigDecimal balance = BigDecimal.ZERO;
    
-    public Account(String ID, BigDecimal balance ){
-        this.ID = ID;
+    public Account( BigDecimal balance ){
+        this.ID = Util.getRandomString();
         this.balance = balance;
     } // constructor with ID and balance
 
