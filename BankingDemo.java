@@ -13,82 +13,61 @@ public class BankingDemo {
         KapitalBank.addCustomer(Tom);
         KapitalBank.addCustomer(Ann); // Adding the two new customers Checking
 
-        // Create some accounts for the customers
         CheckingAccount TomChecking = KapitalBank.createCheckingAccount(Tom, new BigDecimal("1000"), new BigDecimal("500"));
-        SavingAccount DaddySaving = KapitalBank.createSavingAccount(Tom, new BigDecimal("5000"), new BigDecimal("0.1"));
+        SavingAccount TomSaving = KapitalBank.createSavingAccount(Tom, new BigDecimal("5000"), new BigDecimal("0.1")); // creating an account for the customer - Tom
         
-        CheckingAccount MommyChecking = KapitalBank.createCheckingAccount(Ann, new BigDecimal("2000"), new BigDecimal("1000"));
-        SavingAccount MommySaving = KapitalBank.createSavingAccount(Ann, new BigDecimal("6660"), new BigDecimal("1"));
+        CheckingAccount AnnChecking = KapitalBank.createCheckingAccount(Ann, new BigDecimal("2000"), new BigDecimal("1000"));
+        SavingAccount AnnSaving = KapitalBank.createSavingAccount(Ann, new BigDecimal("6660"), new BigDecimal("1")); // creating an account for the customer - Ann
 
-        //Add accounts to the customers
         Tom.addAccount(new SavingAccount("145678", new BigDecimal("333"), new BigDecimal("0.1")));
+        Ann.addAccount(new SavingAccount("145678", new BigDecimal("333"), new BigDecimal("0.1"))); // now adding the accounts for the customer - Ann and Tom
 
-
-        //Deposit and withdraw some money, without exceptions
-        TomChecking.deposit(new BigDecimal("100")); // 1100
-        TomChecking.withdraw(new BigDecimal("200")); // 900
-        DaddySaving.deposit(new BigDecimal("1000")); // 6000
-        DaddySaving.withdraw(new BigDecimal("2000")); // 4000
-        MommyChecking.deposit(new BigDecimal("500")); // 2500
+        TomChecking.deposit(new BigDecimal("100")); 
+        TomChecking.withdraw(new BigDecimal("200")); 
+        TomSaving.deposit(new BigDecimal("1000")); 
+        TomSaving.withdraw(new BigDecimal("2000")); 
+        AnnChecking.deposit(new BigDecimal("500")); // Deposit and withdraw the amount of setted money without exceptions accurence
         
-        //Exception
         try{
-            MommyChecking.withdraw(new BigDecimal("5000"));}
+            AnnChecking.withdraw(new BigDecimal("5000"));}
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
+            } // IllegalArgumentException exception is thrown
     
-            }
-    
-
-        
         try{
             TomChecking.deposit(new BigDecimal("-100"));}
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
+            } // IllegalArgumentException exception is thrown
     
-            }
-        
-
-
-        System.out.println("The customers of PashaBank:");
+        System.out.println("The customers of KapitalBank are here");
         for (CustomerClass c : KapitalBank.getCustomers()) {
             System.out.println(c.getFullName());
         }
 
-
-        // Print out account balances
         System.out.println(Tom.getFullName() + " checking account balance: " + TomChecking.getBalance()); 
-        System.out.println(Tom.getFullName() + " savings account balance: " + DaddySaving.getBalance()); 
-        System.out.println(Ann.getFullName() + " checking account balance: " + MommyChecking.getBalance());
-        System.out.println(Ann.getFullName() + " savings account balance: " + MommySaving.getBalance());
+        System.out.println(Tom.getFullName() + " savings account balance: " + TomSaving.getBalance()); 
+        System.out.println(Ann.getFullName() + " checking account balance: " + AnnChecking.getBalance());
+        System.out.println(Ann.getFullName() + " savings account balance: " + AnnSaving.getBalance()); // Printing the balances of the accounts
 
-        // Get customer's total balance
-        System.out.println(Tom.getFullName() + " total balance: " + Tom.getTotalBalance()); // 4000 + 900 + 333
-        System.out.println(Ann.getFullName() + " total balance: " + Ann.getTotalBalance()); // 0 + 6600
-
-        // Get customer's accounts based on type
+        System.out.println(Tom.getFullName() + " total balance: " + Tom.getTotalBalance()); 
+        System.out.println(Ann.getFullName() + " total balance: " + Ann.getTotalBalance()); // The customer's total balance is given here
+        
         System.out.println(Tom.getFullName() + " checking accounts: " + Tom.getAccounts("checking"));
         System.out.println(Tom.getFullName() + " saving accounts: " + Tom.getAccounts("saving"));
         System.out.println(Ann.getFullName() + " checking accounts: " + Ann.getAccounts("checking"));
-        System.out.println(Ann.getFullName() + " saving accounts: " + Ann.getAccounts("saving"));
+        System.out.println(Ann.getFullName() + " saving accounts: " + Ann.getAccounts("saving")); // The needs of the customers
 
-        //Remove a saving account from a customer
-        Tom.removeAccount(DaddySaving);
-        System.out.println(Tom.getFullName() + " accounts after removing savings account: " + Tom.getAccounts("saving"));
-        //System.out.println(Daddy.getFullName() + " checking accounts: " + Daddy.getAccounts("checking"));
+        Tom.removeAccount(TomSaving);
+        System.out.println(Tom.getFullName() + " accounts after removing savings account: " + Tom.getAccounts("saving")); // Deletion of the saving account from the customer that is shown
         
-
-        // Remove a customer from the bank
         try{
             KapitalBank.removeCustomer(Ann);}
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
 
-        System.out.println("Bank's customers after removing: " + KapitalBank.getCustomers());
-
-
-        
+        System.out.println("Bank's customers after removing: " + KapitalBank.getCustomers()); // Just Remove a customer from the bank and the end
+    
 }
-
 }
