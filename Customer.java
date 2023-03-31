@@ -7,8 +7,8 @@ public class Customer {
     private String fullName;
     private List<Account> accounts; // a customer can have many accounts, so we create a list to store them 
 
-    public Customer(String customerId, String fullName) {
-        this.customerId = customerId;
+    public Customer(String fullName) {
+        this.customerId = Util.getRandomString();
         this.fullName = fullName;
         this.accounts = new ArrayList<>();
     } // constructor for a customer with a specified ID and name 
@@ -39,10 +39,15 @@ public class Customer {
 
     public void removeAccount(Account account) {
         if (!accounts.contains(account)) {
-            throw new IllegalArgumentException("Account not found for this customer"); 
+            throw new IllegalArgumentException("Account not found for this particular customer"); 
         }
         accounts.remove(account);
     } // remove an account from the customer's list of accounts, throwing an exception if it's not found
+
+    @Override
+    public String toString() {
+        return "ID: " + customerId + ", fullName: " + fullName;
+    }
 
     public void removeAccount(String accountId) {
         for (Account account : accounts) {
@@ -51,7 +56,7 @@ public class Customer {
                 return;
             }
         }
-        throw new IllegalArgumentException("Account not found for this customer");
+        throw new IllegalArgumentException("Account not found for this particular customer");
     } // remove an account with the specified ID from the customer's list of accounts, throwing an exception if it's not found
 
     public BigDecimal getTotalBalance() {

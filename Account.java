@@ -24,6 +24,11 @@ public abstract class Account {
     protected void setID(String ID) {
         this.ID = ID;
     } // setID
+
+    @Override
+    public String toString() {
+        return "ID: " + ID + ", balance: " + balance;
+}
     
     public void deposit(BigDecimal amount) {
             if (amount.compareTo(new BigDecimal("0")) > 0) //  we have to have not a negative one

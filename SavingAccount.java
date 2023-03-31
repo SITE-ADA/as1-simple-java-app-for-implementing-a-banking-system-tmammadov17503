@@ -13,6 +13,11 @@ public class SavingAccount extends Account {
     } // getInterestRate 
 
     @Override
+    public String toString() {
+        return super.toString() + ", interestRate: " + interestRate;
+    }
+
+    @Override
     public void withdraw(BigDecimal amount) {
         if (amount.compareTo(getBalance()) > 0) { // look if it positive because we can not have negative
             throw new IllegalArgumentException("The value that you are trying to withdraw exceeds the amount that you have on your balance"); // exception thrown because the amount that we need to withdraw is greater that the balance
