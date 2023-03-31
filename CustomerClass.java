@@ -5,7 +5,7 @@ import java.util.List;
 public class CustomerClass {
     private String ID;
     private String fullName;
-    private List<Account> accounts; // customer can have many accounts thats why we create this 
+    private List<Account> accounts; // customer can have many accounts that's why we create this 
 
     public CustomerClass(String ID, String fullName) {
         this.ID = ID;
@@ -39,10 +39,10 @@ public class CustomerClass {
 
     public void removeAccount(Account account) {
         if (!accounts.contains(account)) {
-            throw new IllegalArgumentException("Customer account was not found"); // removeAccount using the exception 
+            throw new IllegalArgumentException("Customer account was not found"); 
         }
         accounts.remove(account);
-    } 
+    } // remove account by throwing the exception 
 
     public void removeAccount(String accountId) {
         for (Account account : accounts) {
@@ -51,7 +51,7 @@ public class CustomerClass {
                 break; 
             }
         }
-    }
+    } // removes the account with the specified ID from the customer's list of accounts
 
     public BigDecimal getTotalBalance() {
         BigDecimal totalBalance = BigDecimal.ZERO;
@@ -59,7 +59,7 @@ public class CustomerClass {
             totalBalance = totalBalance.add(account.getBalance());
         }
         return totalBalance;
-    }
+    } // the total balance of the account is returned 
 
     public List<Account> getAccounts(String type) {
         List<Account> filteredAccounts = new ArrayList<>();
@@ -72,4 +72,4 @@ public class CustomerClass {
         }
         return filteredAccounts;
 }
-}
+} // returns the list of accounts for customers based on the type: checking or saving
