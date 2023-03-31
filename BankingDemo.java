@@ -3,12 +3,12 @@ public class BankingDemo {
     public static void main(String[] args) {
         BankingClass KapitalBank = new BankingClass(); // Creation of a new bank 
 
-        KapitalBank.addCustomer(new Customer("9273", "New Customer")); // new customer
+        KapitalBank.addCustomer(new CustomerClass("9273", "New Customer")); // new customer
 
         System.out.println("Newly created account: "+ KapitalBank.getCustomer("9273")); // it would give the name in form of hash code
         
-        Customer Tom = new Customer("7465", "Tom Smith");
-        Customer Ann = new Customer("6384", "Ann Smith"); // creating of two new customers Tom and Ann
+        CustomerClass Tom = new CustomerClass("7465", "Tom Smith");
+        CustomerClass Ann = new CustomerClass("6384", "Ann Smith"); // creating of two new customers Tom and Ann
 
         KapitalBank.addCustomer(Tom);
         KapitalBank.addCustomer(Ann); // Adding the two new customers Checking
@@ -51,7 +51,7 @@ public class BankingDemo {
 
 
         System.out.println("The customers of PashaBank:");
-        for (Customer c : KapitalBank.getCustomers()) {
+        for (CustomerClass c : KapitalBank.getCustomers()) {
             System.out.println(c.getFullName());
         }
 

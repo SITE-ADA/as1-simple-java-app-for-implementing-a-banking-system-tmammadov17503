@@ -23,7 +23,7 @@ public class CheckingAccount extends Account{
             overDraftLimit = overDraftLimit.add(newBalance);
             newBalance = BigDecimal.ZERO;
         }
-        super.balance = newBalance; // updating the parent class 
+        super.setBalance(newBalance); // updating the parent class 
     }
 }
 

@@ -2,12 +2,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
+public class CustomerClass {
     private String ID;
     private String fullName;
     private List<Account> accounts; // customer can have many accounts thats why we create this 
 
-    public Customer(String ID, String fullName) {
+    public CustomerClass(String ID, String fullName) {
         this.ID = ID;
         this.fullName = fullName;
         this.accounts = new ArrayList<>();

@@ -1,9 +1,9 @@
 import java.math.BigDecimal;
 
 public abstract class Account {
-    String ID;
-    BigDecimal balance = BigDecimal.ZERO;
-
+   private String ID;
+   private BigDecimal balance = BigDecimal.ZERO;
+   
     public Account(String ID, BigDecimal balance ){
         this.ID = ID;
         this.balance = balance;
@@ -13,9 +13,17 @@ public abstract class Account {
         return balance;
     } // getBalance
 
+    protected void setBalance(BigDecimal amount){
+        this.balance = amount;
+    } // setBalance
+
     public String getID() {
         return ID;
     } // getID
+
+    protected void setID(String ID) {
+        this.ID = ID;
+    } // setID
     
     public void deposit(BigDecimal amount) {
             if (amount.compareTo(new BigDecimal("0")) > 0) //  we have to have not a negative one
