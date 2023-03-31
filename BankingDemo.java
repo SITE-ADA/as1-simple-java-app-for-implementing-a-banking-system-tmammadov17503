@@ -5,7 +5,7 @@ public class BankingDemo {
     public static void main(String[] args) {
         Banking kapitalBank = new Banking(); // Creation of a new bank 
 
-        Customer c = new Customer("New Customer of Kapital Bank"); // new customer
+        Customer c = new Customer("New Customers of Kapital Bank"); // new customer
         kapitalBank.addCustomer(c); // new customer
         
         System.out.println("Newly created account: " + kapitalBank.getCustomer(c.getCustomerId()).getFullName()); // print customer name
@@ -56,19 +56,23 @@ public class BankingDemo {
         System.out.println(tom.getFullName() + " total balance: " + tom.getTotalBalance()); 
         System.out.println(ann.getFullName() + " total balance: " + ann.getTotalBalance()); // The customer's total balance is given here
         
-        System.out.println(tom.getFullName() + " checking accounts: " + tom.getAccounts("checking"));
         System.out.println(tom.getFullName() + " saving accounts: " + tom.getAccounts("saving"));
-        System.out.println(ann.getFullName() + " checking accounts: " + ann.getAccounts("checking"));
-        System.out.println(ann.getFullName() + " saving accounts: " + ann.getAccounts("saving"));  // The needs of the customers
-
+        System.out.println(tom.getFullName() + " checking accounts: " + tom.getAccounts("checking"));
+        System.out.println(ann.getFullName() + " saving accounts: " + ann.getAccounts("saving")); 
+        System.out.println(ann.getFullName() + " checking accounts: " + ann.getAccounts("checking")); // The needs of the customers
+        
         tom.removeAccount(tomSaving);
-        System.out.println(tom.getFullName() + " accounts result after deleting savings account: " + tom.getAccounts("saving")); // Deletion of the saving account from the customer that is shown
+        System.out.println(tom.getFullName() + " account result after deleting savings account: " + tom.getAccounts("saving")); // Deletion of the saving account from the customer that is shown
+        
+        ann.removeAccount(annSaving);
+        System.out.println(ann.getFullName() + " account result after deleting savings account: " + ann.getAccounts("saving")); // Deletion of the saving account from the customer that is shown
         
         try{
-            kapitalBank.removeCustomer(ann);}
+            kapitalBank.removeCustomer(c);}
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
+
         System.out.println("Bank's customers after removal: " + kapitalBank.getCustomers()); // Just Remove a customer from the bank and the end
 }
 }
